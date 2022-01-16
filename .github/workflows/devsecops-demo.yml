@@ -5,8 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: SonarSource/sonarqube-scan-action@v1.0.0
+        with: 
+        # Additional arguments to the sonar-scanner
+          args:#
+          projectBaseDir:#
+      - uses: snyk/actions@0.3.0
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+             # Which Snyk command to run, defaults to test
+             command: # optional, default is test
+    # Additional arguments to pass to Snyk
+             args: # optional
+    # Output a snyk.json file with results if running the test command
+             json: # optional
+
+    
